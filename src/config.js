@@ -3,7 +3,7 @@ const BLUE = 0x415C71;
 const GREEN = 0x00C7AB;
 
 var enemyChesses = [{x: 0, y: 0, color: RED}, {x: 2, y: 0, color: BLUE}, { x: 4, y: 0, color: GREEN}];
-var myChesses = [{x: 0, y: 5, color: RED}, {x: 2, y: 5, color: BLUE}, { x: 4, y: 5, color: GREEN}];
+var myChesses = [{x: 0, y: 5, color: GREEN}, {x: 2, y: 5, color: BLUE}, { x: 4, y: 5, color: RED}];
 
 var config = {
   width: 640,

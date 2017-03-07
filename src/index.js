@@ -2,7 +2,8 @@ require('../css/style.scss');
 
 import config from './config';
 import Chess from './chess';
-import Block from './block'
+import Block from './block';
+import { findAroundLocation } from './util';
 
 var canvas = document.querySelector('#canvas');
 var app = new PIXI.Application(config.width, config.height, {
@@ -30,15 +31,31 @@ for (var i = 0; i < row; i ++) {
   }
 }
 
+background.interactive = true;
+app.stage.interactive = true;
+
 config.enemyChesses.map((chessConfig, index) => {
   let chess = new Chess('enemychess' + index, chessConfig.color, chessConfig);
   app.stage.addChild(chess.graphics);
-})
+});
 
 config.myChesses.map((chessConfig, index) => {
   let chess = new Chess('mychess' + index, chessConfig.color, chessConfig);
   app.stage.addChild(chess.graphics);
-})
+});
+
+Chess.onClick = (chess) => {
+  blocks.forEach((row) => {
+    row.forEach((block) => {
+      block.draw();
+    })
+  })
+  var arrounds = findAroundLocation(chess.location);
+  arrounds.forEach(item => {
+    var block = blocks[item.y][item.x]
+    block.draw(0.8);
+  });
+};
 
 app.ticker.add(() => {
 });

@@ -9,10 +9,16 @@ let chesses = {};
 function Chess(key, color, postion) {
   this.key = key;
   this.color = color;
-  console.log(calculateChessPosition(postion))
+  this.location = postion
   this.postion = calculateChessPosition(postion);
   this.draw();
-  chesses[key] = this.graphics;
+  chesses[key] = this
+  this.graphics.interactive = true;
+  this.graphics.on('touchstart', function() {
+    if (Chess.onClick) {
+      Chess.onClick(chesses[key])
+    }
+  });
 }
 
 Chess.prototype.draw = function() {
@@ -24,8 +30,9 @@ Chess.prototype.draw = function() {
 }
 
 Chess.prototype.move = function(vector) {
-  this.x += vector.x
-  this.y += vector.y
+  this.location.x += vector.x;
+  this.location.y += vector.y;
+  this.postion = calculateChessPosition(this.location);
   this.draw();
 }
 
