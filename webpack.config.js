@@ -2,6 +2,7 @@ var webpack = require('webpack')
 var path = require('path')
 var fs = require('fs')
 module.exports = {
+  devtool: "source-map",
   entry: {
     chess: './src/index.js'
   },

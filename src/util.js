@@ -8,6 +8,16 @@ export const calculateChessPosition = (location) => {
   }
 }
 
+export const calculateBlockPosition = (location) => {
+  var { x, y } = location;
+  return {
+    x: space / 2 + (space + length) * x,
+    y: space / 2 + (space + length) * y,
+    width: length,
+    height: length
+  }
+}
+
 export const findAroundLocation = (location) => {
   var arounds = [];
   var minx = location.x > 0 ? location.x - 1 : 0;

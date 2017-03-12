@@ -1,7 +1,8 @@
 const color = 0XFFE9BF;
+import { calculateBlockPosition } from './util';
 
 function Block(opt) {
-  this.config = opt;
+  this.config = Object.assign({}, opt, calculateBlockPosition(opt));
   this.draw();
 }
 
